@@ -1,0 +1,114 @@
+<project>
+  <Metadata>
+    <metadata>
+      <PackageName>Adaptive Rules</PackageName>
+      <Author>Adam Conn</Author>
+      <Version>1.0</Version>
+      <Revision />
+      <License />
+      <Comment />
+      <Attributes />
+      <Readme>This package installs the Adaptive Rules module for the 
+Sitecore rules engine. The purpose of this module is to 
+make rules, conditions and actions easier to configure by
+providing the ability to make configuration options 
+dependent on other options that have already been configured.
+
+This package includes the following components:
+
+* AdaptiveTree macro *
+This macro has its root item dynamically selected 
+based on the value of another parameter on the condition 
+or action.
+
+The following is an example of a condition that is configured 
+to use this macro. The first parameter uses the standard Tree 
+macro to allow the author to select a vehicle type. The 
+second parameter allows the author to select a vehicle 
+class based on the vehicle type.
+
+when the vehicle is a [vehicletypeid,Tree,root={4FE677B4-55AD-470A-AB76-68E249DA5472},specific] type that is a [vehicleclassid,AdaptiveTree,dependency=vehicletypeid,specific] class
+
+* AdaptiveOperator macro *
+This macro is similar to the AdaptiveTree macro but instead 
+of displaying a tree with the children of the item specified 
+by the depenedency parameter this macro uses the module 
+configuration to determine which macro to use.
+
+* AdaptiveValue macro *
+This macro is like the AdaptiveOperator macro but it uses a 
+different section of the module configuration to determine 
+which macro to use.</Readme>
+      <Publisher />
+      <PostStep />
+      <PackageID />
+    </metadata>
+  </Metadata>
+  <SaveProject>True</SaveProject>
+  <Sources>
+    <xitems>
+      <Entries>
+        <x-item>/master/sitecore/system/Settings/Rules/Definitions/Macros/Adaptive Tree Macro Settings/{19E82F1E-432C-4AF4-B91B-CF785B94F1DC}/invariant/0</x-item>
+        <x-item>/master/sitecore/system/Settings/Rules/Definitions/Macros/AdaptiveOperator/{0620A274-61F1-4F0A-8304-9D775E9EE51A}/invariant/0</x-item>
+        <x-item>/master/sitecore/system/Settings/Rules/Definitions/Macros/AdaptiveTree/{6C6E9C0E-1D3E-437B-AB68-E8BC8A856CC5}/invariant/0</x-item>
+        <x-item>/master/sitecore/system/Settings/Rules/Definitions/Macros/AdaptiveValue/{4D48F2AC-A696-4B0E-BE8A-A6D2600555AA}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/System/Rules/Adaptive/{9A0A1A1C-CC8B-4DB2-8F42-6E7500B7A624}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/System/Rules/Adaptive/Adaptive Tree Macro Settings/__Standard Values/{5AC96F3F-EB2F-43A0-A858-75AE61A191B5}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/System/Rules/Adaptive/Adaptive Tree Macro Settings/{5E7F29BC-C07B-44F1-B365-1E15F61AD43E}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/System/Rules/Adaptive/Adaptive Tree Macro Settings/Select Item Options/{AACFD62B-DC42-4A9B-9368-2D8B97983356}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/System/Rules/Adaptive/Adaptive Tree Macro Settings/Select Item Options/Include Templates for Display/{1D834538-2893-4B10-A5CA-DA0FDFF9EAED}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/System/Rules/Adaptive/Adaptive Tree Macro Settings/Select Item Options/Include Templates for Selection/{37C75237-CDD6-4977-9242-71C10A117954}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/System/Rules/Adaptive/Adaptive Tree Macro Settings/Select Item Options/Show Root/{74F39D1C-FFB0-45A2-AD9E-7788D29C4500}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/System/Rules/Adaptive/Adaptive Tree Macro Settings/Select Item Options/Text/{6B9C17CD-F759-48D3-BF11-2382139395C4}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/System/Rules/Adaptive/Adaptive Tree Macro Settings/Select Item Options/Title/{9EB3ADB3-DB23-4B3E-B548-F1605A2BD5C1}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/System/Rules/Adaptive/Adaptive Tree Macro Settings/Window/{05F5ACDD-4D96-402E-9352-31F81FDBEB78}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/System/Rules/Adaptive/Adaptive Tree Macro Settings/Window/Height/{7A39FAF8-A522-4136-88B8-24A2A00F3B81}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/System/Rules/Adaptive/Adaptive Tree Macro Settings/Window/Width/{519C8A2E-1E56-4442-BD7E-1B379161F9B5}/invariant/0</x-item>
+        <x-item>/master/sitecore/system/Settings/Rules/Definitions/Boolean Operators/{E9283766-699F-4A05-8321-E9B8E30F497E}/invariant/0</x-item>
+        <x-item>/master/sitecore/system/Settings/Rules/Definitions/Boolean Operators/is not/{13E3D665-87AD-4C0C-9970-FFFA0AB5032B}/invariant/0</x-item>
+        <x-item>/master/sitecore/system/Settings/Rules/Definitions/Boolean Operators/is/{C1DDB5D4-B799-417D-A50D-F04784774436}/invariant/0</x-item>
+      </Entries>
+      <SkipVersions>False</SkipVersions>
+      <Converter>
+        <ItemToEntryConverter>
+          <Transforms>
+            <InstallerConfigurationTransform>
+              <Options>
+                <BehaviourOptions>
+                  <ItemMode>Undefined</ItemMode>
+                  <ItemMergeMode>Undefined</ItemMergeMode>
+                </BehaviourOptions>
+              </Options>
+            </InstallerConfigurationTransform>
+          </Transforms>
+        </ItemToEntryConverter>
+      </Converter>
+      <Include />
+      <Exclude />
+      <Name>items</Name>
+    </xitems>
+    <xfiles>
+      <Entries>
+        <x-item>/App_Config/Include/Sitecore.Strategy.Adaptive.config</x-item>
+        <x-item>/bin/Sitecore.Strategy.Adaptive.dll</x-item>
+      </Entries>
+      <Converter>
+        <FileToEntryConverter>
+          <Root>/</Root>
+          <Transforms />
+        </FileToEntryConverter>
+      </Converter>
+      <Include />
+      <Exclude />
+      <Name>files</Name>
+    </xfiles>
+  </Sources>
+  <Converter>
+    <TrivialConverter>
+      <Transforms />
+    </TrivialConverter>
+  </Converter>
+  <Include />
+  <Exclude />
+  <Name />
+</project>

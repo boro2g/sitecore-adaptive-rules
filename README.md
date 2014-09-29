@@ -2,9 +2,9 @@
 This module adds support for adaptive rules for the Sitecore Rules Engine. Adaptive rules are useful when properties on conditions and actions have dependencies on one another. 
 
 ### Module download
-The adaptive rules installation package is available [here](https://github.com/adamconn/sitecore-adaptive-rules/tree/master/packages/).
+The adaptive rules installation package is available [here](https://github.com/adamconn/sitecore-adaptive-rules/tree/master/sitecore/).
 
-A package that includes sample conditions that demonstrate how to use adaptive rules is available [here](https://github.com/adamconn/sitecore-adaptive-rules/tree/master/packages/).
+A package that includes sample conditions that demonstrate how to use adaptive rules is available [here](https://github.com/adamconn/sitecore-adaptive-rules/tree/master/sitecore/).
 
 ### Sample use case
 For example, imagine a case where an author wants to personalize a page based a video the visitor watched the last time he visited the site. If the visitor watched a video about warm-weather vacation destinations the author wants the visitor to see a promotion about travel to tropical islands. If the visitor watched videos about skiing and snowboarding the author wants the visitor to see a promotion about travel with ski resorts.

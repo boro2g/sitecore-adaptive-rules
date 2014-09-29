@@ -1,0 +1,101 @@
+<project>
+  <Metadata>
+    <metadata>
+      <PackageName>Adaptive Rules Sample Data</PackageName>
+      <Author>Adam Conn</Author>
+      <Version>1.0</Version>
+      <Revision />
+      <License />
+      <Comment />
+      <Attributes />
+      <Readme>This package installs sample data and conditions that 
+demonstrates how to use the Adaptive Rules module. The 
+Adaptive Rules module must be installed before installing 
+this module.
+
+After this module is installed new conditions will be 
+available at /sitecore/system/Settings/Rules/Definitions/Elements/Adaptive Rules Samples
+
+These conditions:
+* reference items located at /sitecore/system/Modules/Adaptive Rules Sample Data
+* will appear in the personalization editor (meaning they have the "Conditional Renderings" tag assigned)
+
+This package also includes a config file Sitecore.Strategy.Adaptive.Sample.config 
+that demonstrates how to configure the Adaptive Rules module
+so the AdaptiveOperator and AdaptiveValue macros work.</Readme>
+      <Publisher />
+      <PostStep />
+      <PackageID />
+    </metadata>
+  </Metadata>
+  <SaveProject>True</SaveProject>
+  <Sources>
+    <xitems>
+      <Entries>
+        <x-item>/master/sitecore/system/Modules/Adaptive Rules Sample Data/{495B562E-5DF9-458F-B646-329DCA2BF5E0}/invariant/0</x-item>
+        <x-item>/master/sitecore/system/Modules/Adaptive Rules Sample Data/Places/{207BBFD5-3F29-4795-A856-F1407412DACE}/invariant/0</x-item>
+        <x-item>/master/sitecore/system/Modules/Adaptive Rules Sample Data/Places/Oregon/{E1749DD0-FCCB-41B4-9BDF-4C83A1CFF1B3}/invariant/0</x-item>
+        <x-item>/master/sitecore/system/Modules/Adaptive Rules Sample Data/Places/Oregon/Portland/{C379A2FA-6D94-4DD4-902C-D86F73CB9951}/invariant/0</x-item>
+        <x-item>/master/sitecore/system/Modules/Adaptive Rules Sample Data/Places/Oregon/Salem/{3D26FF12-068F-4A10-8330-57DAC87E1BD1}/invariant/0</x-item>
+        <x-item>/master/sitecore/system/Modules/Adaptive Rules Sample Data/Places/Washington/{2D44A3CE-6182-4C26-827F-AAF0606C396E}/invariant/0</x-item>
+        <x-item>/master/sitecore/system/Modules/Adaptive Rules Sample Data/Types/{F7D3C579-3042-4D26-9140-ECFB2AB49EB7}/invariant/0</x-item>
+        <x-item>/master/sitecore/system/Modules/Adaptive Rules Sample Data/Types/DateTime/{230ED4E0-CC4F-449E-AF0A-6B6D7BFF7508}/invariant/0</x-item>
+        <x-item>/master/sitecore/system/Modules/Adaptive Rules Sample Data/Types/Int32/{1579A0DC-1D5C-4264-902D-8208261D6C9F}/invariant/0</x-item>
+        <x-item>/master/sitecore/system/Modules/Adaptive Rules Sample Data/Types/String/{E9B60D93-8BDC-4F18-A095-C47410A563DF}/invariant/0</x-item>
+        <x-item>/master/sitecore/system/Settings/Rules/Definitions/Elements/Adaptive Rules Samples/{F1227D6F-6B04-4E66-B728-C2278F98C988}/invariant/0</x-item>
+        <x-item>/master/sitecore/system/Settings/Rules/Definitions/Elements/Adaptive Rules Samples/Complex Adaptive Test Condition/{757E2E54-5447-4C07-A443-99DBE1D89B51}/invariant/0</x-item>
+        <x-item>/master/sitecore/system/Settings/Rules/Definitions/Elements/Adaptive Rules Samples/Simple Adaptive Test Condition/{7B05BC07-E9AD-46B6-A492-9652FD0C24F4}/invariant/0</x-item>
+        <x-item>/master/sitecore/system/Settings/Rules/Definitions/Elements/Adaptive Rules Samples/Tags/{C684552B-C4D5-4E7E-A665-1BDB7E4AC146}/invariant/0</x-item>
+        <x-item>/master/sitecore/system/Settings/Rules/Definitions/Elements/Adaptive Rules Samples/Tags/Default/{03152F96-98F2-4F6B-8849-0E9596C56C65}/invariant/0</x-item>
+        <x-item>/master/sitecore/system/Settings/Rules/Definitions/Elements/Adaptive Rules Samples/Visibility/{58F5B9D9-6347-4167-8E3F-4170825493BF}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Adaptive Test/{4E3F7A74-89ED-4D58-978F-1BF9016C3DB9}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Adaptive Test/Adaptive Test Child/__Standard Values/{99C27E6B-C02E-4668-9FF7-B44C397304FD}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Adaptive Test/Adaptive Test Child/{CF09D752-DF25-440B-9EBD-79C01BB1F30C}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Adaptive Test/Adaptive Test With Type/{91D5176B-546B-4C75-A40C-553A47CD6427}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Adaptive Test/Adaptive Test With Type/Data/{9882DCE8-F041-4D2D-90EF-2CF6C17DAFF2}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Adaptive Test/Adaptive Test With Type/Data/Type/{4961B3E3-2B51-4116-9E70-4FAA0EAAE63B}/invariant/0</x-item>
+      </Entries>
+      <SkipVersions>False</SkipVersions>
+      <Converter>
+        <ItemToEntryConverter>
+          <Transforms>
+            <InstallerConfigurationTransform>
+              <Options>
+                <BehaviourOptions>
+                  <ItemMode>Undefined</ItemMode>
+                  <ItemMergeMode>Undefined</ItemMergeMode>
+                </BehaviourOptions>
+              </Options>
+            </InstallerConfigurationTransform>
+          </Transforms>
+        </ItemToEntryConverter>
+      </Converter>
+      <Include />
+      <Exclude />
+      <Name>items</Name>
+    </xitems>
+    <xfiles>
+      <Entries>
+        <x-item>/App_Config/Include/Sitecore.Strategy.Adaptive.Sample.config</x-item>
+        <x-item>/bin/Sitecore.Strategy.Adaptive.Sample.dll</x-item>
+      </Entries>
+      <Converter>
+        <FileToEntryConverter>
+          <Root>/</Root>
+          <Transforms />
+        </FileToEntryConverter>
+      </Converter>
+      <Include />
+      <Exclude />
+      <Name>files</Name>
+    </xfiles>
+  </Sources>
+  <Converter>
+    <TrivialConverter>
+      <Transforms />
+    </TrivialConverter>
+  </Converter>
+  <Include />
+  <Exclude />
+  <Name />
+</project>
