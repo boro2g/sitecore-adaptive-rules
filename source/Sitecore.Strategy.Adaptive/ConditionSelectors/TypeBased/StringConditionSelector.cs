@@ -33,6 +33,14 @@ namespace Sitecore.Strategy.Adaptive.ConditionSelectors.TypeBased
             {
                 condition.RightValue = right.ToString();
             }
+            if (adaptiveCondition.Operator == Sitecore.Strategy.Adaptive.Items.ItemIDs.BooleanOperatorTrue)
+            {
+                adaptiveCondition.Operator = Sitecore.Strategy.Adaptive.Items.ItemIDs.StringOperatorTrue;
+            }
+            else if (adaptiveCondition.Operator == Sitecore.Strategy.Adaptive.Items.ItemIDs.BooleanOperatorFalse)
+            {
+                adaptiveCondition.Operator = Sitecore.Strategy.Adaptive.Items.ItemIDs.StringOperatorFalse;
+            }
             condition.OperatorId = adaptiveCondition.Operator.ToString();
             return condition;
         }
