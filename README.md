@@ -1,6 +1,8 @@
 # sitecore-adaptive-rules
 This module adds support for adaptive rules for the Sitecore Rules Engine. Adaptive rules are useful when properties on conditions and actions have dependencies on one another. 
 
+You can [watch a video](http://youtu.be/M2m2vJ5diEI) that shows what this module does.
+
 ### Module download
 The adaptive rules installation package is available [here](https://github.com/adamconn/sitecore-adaptive-rules/tree/master/sitecore/).
 
