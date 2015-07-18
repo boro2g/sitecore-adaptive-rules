@@ -13,34 +13,43 @@ namespace Sitecore.Strategy.Adaptive.Config
     {
         public MacroSelectorConfigForTypeBase()
         {
-            this.OperatorSelectors = new List<IMacroSelectorForType>();
-            this.ValueSelectors = new List<IMacroSelectorForType>();
-            this.ConditionSelectors = new List<IConditionSelectorForType>();
+            this.OperatorSelectors = new Dictionary<Type,IMacroSelectorForType>();
+            this.ValueSelectors = new Dictionary<Type, IMacroSelectorForType>();
+            this.ConditionSelectors = new Dictionary<Type, IConditionSelectorForType>();
         }
         public abstract bool DoesApplyToType(Type type);
-        public List<IMacroSelectorForType> OperatorSelectors { get; private set; }
-        public List<IMacroSelectorForType> ValueSelectors { get; private set; }
-        public List<IConditionSelectorForType> ConditionSelectors { get; private set; }
-        protected virtual void AddSelector(IMacroSelectorForType selector, List<IMacroSelectorForType> list)
+        public abstract HashSet<Type> ApplicableTypes { get; }
+
+        public Dictionary<Type, IMacroSelectorForType> OperatorSelectors { get; private set; }
+        public Dictionary<Type, IMacroSelectorForType> ValueSelectors { get; private set; }
+        public Dictionary<Type, IConditionSelectorForType> ConditionSelectors { get; private set; }
+
+        protected virtual void AddSelector(IMacroSelectorForType selector, Dictionary<Type, IMacroSelectorForType> list)
         {
             Assert.ArgumentNotNull(selector, "selector");
             Assert.ArgumentNotNull(list, "list");
-            if (list.Contains(selector))
+
+            foreach (var type in selector.ApplicableTypes)
             {
-                return;
+                if (!list.ContainsKey(type))
+                {
+                    list.Add(type, selector);
+                }
             }
-            list.Add(selector);
         }
-        protected virtual IMacroSelectorForType GetSelector(Type type, List<IMacroSelectorForType> list)
+    
+        protected virtual IMacroSelectorForType GetSelector(Type type, Dictionary<Type, IMacroSelectorForType> list)
         {
             Assert.ArgumentNotNull(type, "type");
             Assert.ArgumentNotNull(list, "list");
-            foreach (var selector in list)
+
+            if (list.ContainsKey(type))
             {
-                if (selector.DoesApplyToType(type))
-                {
-                    return selector;
-                }
+                return list[type];
+            }
+            if (list.ContainsKey(typeof(System.Object)))
+            {
+                return list[typeof(System.Object)];
             }
             return null;
         }
@@ -65,20 +74,19 @@ namespace Sitecore.Strategy.Adaptive.Config
         public virtual void AddConditionSelector(IConditionSelectorForType selector)
         {
             Assert.ArgumentNotNull(selector, "selector");
-            if (this.ConditionSelectors.Contains(selector))
+            foreach (var type in selector.ApplicableTypes)
             {
-                return;
+                if (!this.ConditionSelectors.ContainsKey(type))
+                {
+                    this.ConditionSelectors[type] = selector;
+                }
             }
-            this.ConditionSelectors.Add(selector);
         }
         public virtual IConditionSelectorForType GetConditionSelector(Type type)
         {
-            foreach (var selector in this.ConditionSelectors)
+            if (this.ConditionSelectors.ContainsKey(type))
             {
-                if (selector.DoesApplyToType(type))
-                {
-                    return selector;
-                }
+                return this.ConditionSelectors[type];
             }
             return null;
         }

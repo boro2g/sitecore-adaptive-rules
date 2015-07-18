@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <Import Project="..\SitecoreReferences\Sitecore.Reference.Path.xml" Condition="Exists('..\SitecoreReferences\Sitecore.Reference.Path.xml')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -40,7 +41,7 @@
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Sitecore.Kernel">
-      <HintPath>C:\Sitecore\sc75\Website\bin\Sitecore.Kernel.dll</HintPath>
+      <HintPath>$(SitecoreLibDir)Sitecore.Kernel.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="System.Web.DynamicData" />
@@ -61,10 +62,13 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConditionSelectors\TypeBased\ConditionSelectorForTypeBase.cs" />
+    <Compile Include="ConditionSelectors\TypeBased\DateTimeConditionSelector.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="ConditionSelectors\TypeBased\StringConditionSelector.cs" />
     <Compile Include="ConditionSelectors\TypeBased\NumberConditionSelector.cs" />
     <Compile Include="ConditionSelectors\TypeBased\IdConditionSelector.cs" />
-    <Compile Include="ConditionSelectors\TypeBased\DateTimeConditionSelector.cs" />
     <Compile Include="ConditionSelectors\TypeBased\IConditionSelectorForType.cs" />
     <Compile Include="Config\IMacroSelectorConfigForType.cs" />
     <Compile Include="Config\TypeBasedMacroSelectorConfig.cs" />
@@ -89,6 +93,7 @@
     <Compile Include="Providers\AdaptiveProviderBase.cs" />
     <Compile Include="Rules\Conditions\AdaptiveConditionBase.cs" />
     <Compile Include="Rules\Conditions\IdCompareCondition.cs" />
+    <Compile Include="Rules\Conditions\DateTimeCompareCondition.cs" />
     <Compile Include="Rules\Conditions\NumberCompareCondition.cs" />
     <Compile Include="Rules\Conditions\StringCompareCondition.cs" />
     <Compile Include="Items\AdaptiveTreeMacroSettingsItem.cs" />

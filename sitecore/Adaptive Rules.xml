@@ -3,7 +3,7 @@
     <metadata>
       <PackageName>Adaptive Rules</PackageName>
       <Author>Adam Conn</Author>
-      <Version>1.0</Version>
+      <Version>1.0.1</Version>
       <Revision />
       <License />
       <Comment />
@@ -95,7 +95,16 @@ which macro to use.</Readme>
       <Converter>
         <FileToEntryConverter>
           <Root>/</Root>
-          <Transforms />
+          <Transforms>
+            <InstallerConfigurationTransform>
+              <Options>
+                <BehaviourOptions>
+                  <ItemMode>Undefined</ItemMode>
+                  <ItemMergeMode>Undefined</ItemMergeMode>
+                </BehaviourOptions>
+              </Options>
+            </InstallerConfigurationTransform>
+          </Transforms>
         </FileToEntryConverter>
       </Converter>
       <Include />

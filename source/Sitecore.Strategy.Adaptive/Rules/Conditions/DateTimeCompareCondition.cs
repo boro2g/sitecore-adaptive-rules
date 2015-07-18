@@ -8,32 +8,35 @@ using System.Web;
 
 namespace Sitecore.Strategy.Adaptive.Rules.Conditions
 {
-    public class NumberCompareCondition<T> : OperatorCondition<T> where T : RuleContext
+    public class DateTimeCompareCondition<T> : OperatorCondition<T> where T : RuleContext
     {
-        public double LeftValue { get; set; }
-        public double RightValue { get; set; }
-        
-        protected virtual bool Compare(double leftValue, double rightValue)
+        public DateTime LeftValue { get; set; }
+        public DateTime RightValue { get; set; }
+
+        protected virtual bool Compare(DateTime leftValue, DateTime rightValue)
         {
+            var diffInMinutes = DateUtil.CompareDatesIgnoringSeconds(leftValue, RightValue);
+
             switch (base.GetOperator())
             {
                 case ConditionOperator.Equal:
-                    return (Math.Abs(leftValue - rightValue) < 0.000001);
-
-                case ConditionOperator.GreaterThanOrEqual:
-                    return (leftValue >= rightValue);
-
-                case ConditionOperator.GreaterThan:
-                    return (leftValue > rightValue);
-
-                case ConditionOperator.LessThanOrEqual:
-                    return (leftValue <= rightValue);
-
-                case ConditionOperator.LessThan:
-                    return (leftValue < rightValue);
+                    return diffInMinutes == 0;
 
                 case ConditionOperator.NotEqual:
-                    return (Math.Abs(leftValue - rightValue) > 0.000001);
+                    return diffInMinutes != 0;
+
+                case ConditionOperator.GreaterThanOrEqual:
+                    return diffInMinutes >= 0;
+
+                case ConditionOperator.GreaterThan:
+                    return diffInMinutes > 0;
+
+                case ConditionOperator.LessThanOrEqual:
+                    return diffInMinutes <= 0;
+
+                case ConditionOperator.LessThan:
+                    return diffInMinutes < 0;
+
             }
             return false;
         }

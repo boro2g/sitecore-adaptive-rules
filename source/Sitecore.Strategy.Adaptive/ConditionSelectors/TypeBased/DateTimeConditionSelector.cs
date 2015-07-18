@@ -8,20 +8,28 @@ using System.Web;
 
 namespace Sitecore.Strategy.Adaptive.ConditionSelectors.TypeBased
 {
-    public class DateTimeConditionSelector : IConditionSelectorForType
+    public class DateTimeConditionSelector : ConditionSelectorForTypeBase
     {
-        public virtual bool DoesApplyToType(Type type)
+        public DateTimeConditionSelector() 
+            : base(typeof(DateTime))
         {
-            if (typeof(DateTime) == type)
-            {
-                return true;
-            }
-            return false;
         }
 
-        public RuleCondition<T> GetCondition<T>(Type type, AdaptiveConditionBase<T> adaptiveCondition, T ruleContext) where T : RuleContext
+        public override RuleCondition<T> GetCondition<T>(Type type, AdaptiveConditionBase<T> adaptiveCondition, T ruleContext) 
         {
-            throw new NotImplementedException();
+            var condition = new DateTimeCompareCondition<T>();
+            var left = adaptiveCondition.GetLeftValue(ruleContext);
+            if (left != null)
+            {
+                condition.LeftValue = DateUtil.ParseDateTime(left.ToString(), DateTime.MinValue);
+            }
+            var right = adaptiveCondition.GetRightValue(ruleContext);
+            if (right != null)
+            {
+                condition.RightValue = DateUtil.ParseDateTime(right.ToString(), DateTime.MinValue);
+            }
+            condition.OperatorId = adaptiveCondition.Operator.ToString();
+            return condition;
         }
     }
 }

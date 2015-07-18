@@ -9,36 +9,36 @@ using System.Web;
 
 namespace Sitecore.Strategy.Adaptive.ConditionSelectors.TypeBased
 {
-    public class NumberConditionSelector : IConditionSelectorForType
+    public class NumberConditionSelector : ConditionSelectorForTypeBase
     {
-        public virtual bool DoesApplyToType(Type type)
+
+        public NumberConditionSelector() 
+            : base (new HashSet<Type>() 
+                    {
+                        typeof(short) ,
+                        typeof(ushort) , 
+                        typeof(int) , 
+                        typeof(uint) ,
+                        typeof(long) ,
+                        typeof(ulong) , 
+                        typeof(float) ,
+                        typeof(double)         
+                    })
         {
-            if (typeof(short) == type || 
-                typeof(ushort) == type || 
-                typeof(int) == type || 
-                typeof(uint) == type || 
-                typeof(long) == type || 
-                typeof(ulong) == type || 
-                typeof(float) == type ||
-                typeof(double) == type)
-            {
-                return true;
-            }
-            return false;
         }
 
-        public RuleCondition<T> GetCondition<T>(Type type, AdaptiveConditionBase<T> adaptiveCondition, T ruleContext) where T : RuleContext
+        public override RuleCondition<T> GetCondition<T>(Type type, AdaptiveConditionBase<T> adaptiveCondition, T ruleContext) 
         {
             var condition = new NumberCompareCondition<T>();
             var left = adaptiveCondition.GetLeftValue(ruleContext);
             if (left != null) 
             {
-                condition.LeftValue = float.Parse(left.ToString());
+                condition.LeftValue = double.Parse(left.ToString());
             }
             var right = adaptiveCondition.GetRightValue(ruleContext);
             if (right != null) 
             {
-                condition.RightValue= float.Parse(right.ToString());
+                condition.RightValue= double.Parse(right.ToString());
             }
             condition.OperatorId = adaptiveCondition.Operator.ToString();
             return condition;

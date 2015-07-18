@@ -12,6 +12,7 @@ namespace Sitecore.Strategy.Adaptive.Config
     public interface IMacroSelectorConfigForType
     {
         bool DoesApplyToType(Type type);
+        HashSet<Type> ApplicableTypes { get; }
         IMacroSelectorForType GetOperatorSelector(Type type);
         IMacroSelectorForType GetValueSelector(Type type);
         IConditionSelectorForType GetConditionSelector(Type type);
