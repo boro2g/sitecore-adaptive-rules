@@ -14,20 +14,16 @@ namespace Sitecore.Strategy.Adaptive.Config
         public string TemplateId { get; set; }
         public override bool DoesApplyToItem(Item item)
         {
-            if (item == null)
+            if (item == null 
+            ||  string.IsNullOrEmpty(this.TemplateId) 
+            ||  !ID.IsID(this.TemplateId))
             {
                 return false;
             }
-            if (string.IsNullOrEmpty(this.TemplateId) || !ID.IsID(this.TemplateId))
-            {
-                return false;
-            }
+
             var id = new ID(this.TemplateId);
-            if (item.TemplateID.Equals(id))
-            {
-                return true;
-            }
-            return false;
+
+            return (item.TemplateID.Equals(id));
         }
     }
 }

@@ -11,27 +11,26 @@ namespace Sitecore.Strategy.Adaptive.Config
 {
     public class TypeBasedMacroSelectorConfig : MacroSelectorConfigForTypeBase
     {
+        private HashSet<Type> _applicableTypes = new HashSet<Type>();
+
         public string TypeName { get; set; }
+
         public override bool DoesApplyToType(Type type)
         {
-            if (type == null)
+            return this.ApplicableTypes.Contains(type);
+        }
+
+        public override HashSet<Type> ApplicableTypes
+        {
+            get
             {
-                return false;
+                if (_applicableTypes.Count == 0
+                && !string.IsNullOrEmpty(this.TypeName))
+                {
+                    _applicableTypes.Add(Type.GetType(this.TypeName));
+                }
+                return _applicableTypes;
             }
-            if (string.IsNullOrEmpty(this.TypeName))
-            {
-                return false;
-            }
-            var type2 = Type.GetType(this.TypeName);
-            if (type2 == null)
-            {
-                return false;
-            }
-            if (type.Equals(type2))
-            {
-                return true;
-            }
-            return false;
         }
     }
 }

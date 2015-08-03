@@ -9,18 +9,14 @@ using System.Web;
 
 namespace Sitecore.Strategy.Adaptive.ConditionSelectors.TypeBased
 {
-    public class StringConditionSelector : IConditionSelectorForType
+    public class StringConditionSelector : ConditionSelectorForTypeBase
     {
-        public virtual bool DoesApplyToType(Type type)
+        public StringConditionSelector() 
+            :base(typeof (string))
         {
-            if (typeof(string) == type)
-            {
-                return true;
-            }
-            return false;
         }
 
-        public RuleCondition<T> GetCondition<T>(Type type, AdaptiveConditionBase<T> adaptiveCondition, T ruleContext) where T : RuleContext
+        public override RuleCondition<T> GetCondition<T>(Type type, AdaptiveConditionBase<T> adaptiveCondition, T ruleContext) 
         {
             var condition = new StringCompareCondition<T>();
             var left = adaptiveCondition.GetLeftValue(ruleContext);

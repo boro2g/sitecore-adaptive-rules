@@ -11,6 +11,7 @@ namespace Sitecore.Strategy.Adaptive.MacroSelectors
     public interface IMacroSelectorForType
     {
         bool DoesApplyToType(Type type);
+        HashSet<Type> ApplicableTypes { get; }
         IRuleMacro GetMacro(Type type);
     }
 }

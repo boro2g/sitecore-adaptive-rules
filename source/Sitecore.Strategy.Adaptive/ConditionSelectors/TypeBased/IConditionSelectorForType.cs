@@ -12,6 +12,7 @@ namespace Sitecore.Strategy.Adaptive.ConditionSelectors.TypeBased
     public interface IConditionSelectorForType
     {
         bool DoesApplyToType(Type type);
+        HashSet<Type> ApplicableTypes { get; }
         RuleCondition<T> GetCondition<T>(Type type, AdaptiveConditionBase<T> adaptiveCondition, T ruleContext) where T:RuleContext;
     }
 }
