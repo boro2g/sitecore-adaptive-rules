@@ -20,6 +20,7 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -39,29 +40,19 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.CSharp" />
     <Reference Include="Sitecore.Kernel">
-      <HintPath>$(SitecoreLibDir)Sitecore.Kernel.dll</HintPath>
+      <HintPath>..\SitecoreReferences\Lib\Sitecore.Kernel.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="System.Web.DynamicData" />
-    <Reference Include="System.Web.Entity" />
-    <Reference Include="System.Web.ApplicationServices" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System" />
-    <Reference Include="System.Data" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Configuration" />
-    <Reference Include="System.Web.Services" />
-    <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConditionSelectors\TypeBased\BooleanConditionSelector.cs" />
     <Compile Include="ConditionSelectors\TypeBased\ConditionSelectorForTypeBase.cs" />
     <Compile Include="ConditionSelectors\TypeBased\DateTimeConditionSelector.cs">
       <SubType>Code</SubType>
@@ -92,6 +83,7 @@
     <Compile Include="Providers\AdaptiveProviderCollection.cs" />
     <Compile Include="Providers\AdaptiveProviderBase.cs" />
     <Compile Include="Rules\Conditions\AdaptiveConditionBase.cs" />
+    <Compile Include="Rules\Conditions\BooleanCompareCondition.cs" />
     <Compile Include="Rules\Conditions\IdCompareCondition.cs" />
     <Compile Include="Rules\Conditions\DateTimeCompareCondition.cs" />
     <Compile Include="Rules\Conditions\NumberCompareCondition.cs" />

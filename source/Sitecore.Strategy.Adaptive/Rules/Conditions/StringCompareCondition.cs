@@ -13,6 +13,11 @@ namespace Sitecore.Strategy.Adaptive.Rules.Conditions
         public string RightValue { get; set; }
         protected override bool Execute(T ruleContext)
         {
+            if (String.IsNullOrWhiteSpace(LeftValue))
+            {
+                return false;
+            }
+
             return base.Compare(this.LeftValue, this.RightValue);
         }
 
